@@ -1,0 +1,88 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row" >
+<div id="m_list" name="m_list" class="base_pg"> 
+
+</div>
+</div>
+
+<script type="text/javascript">
+
+  // Map markder INIT 
+  var get_dom =function(id){
+    return $('#'+id);
+  };
+
+  var make_htm = function(id,name,dt,img){
+    var html = [];
+    html.push('<div class="form-group form-inline">  ');
+    html.push('  <div class="input-group">');
+    html.push('    <div class="input-group-addon">Date</div>');
+    html.push('    <input id="dt_'+id+'" class="form-control" type="text" size="10" value="'+dt+'">');
+    html.push('  </div>');
+    html.push('  <div class="input-group">');
+    html.push('    <div class="input-group-addon">Title</div>');
+    html.push('    <input id="name_'+id+'" class="form-control" type="text" size="50" value="'+name+'">');
+    html.push('  </div>');
+    html.push('  <div class="input-group">');
+    html.push('    <button type="button" onclick="myUpdate(\''+id+'\')" class="btn btn-primary">Update</button>');
+    html.push('    <button type="button" onclick="myDelete(\''+id+'\')" class="btn btn-danger">Delete</button>');
+    html.push('</div>');
+    return html;
+  };
+
+  $.ajaxSetup({
+      data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+  });
+
+  var myUpdate = function(id){
+    dom_dt=get_dom('dt_'+id).val();
+    dom_name=get_dom('name_'+id).val();
+     $.ajax({
+         type: "POST",
+         url: "/mk_update",
+         data: {name:dom_name, dt:dom_dt, id:id},
+         dataType: "json",
+         success: function(data){
+          load_markers(data); 
+         },
+         error: function(){
+          alert(arguments[1]);
+         }
+     });
+    console.log('--load data');
+  };
+
+  var myDelete = function(id){
+     $.ajax({
+         type: "POST",
+         url: "/mk_del",
+         data: {mark_id:id},
+         dataType: "json",
+         success: function(data){
+                    load_markers(data); 
+                  }
+     });
+    console.log('--load data');
+  };
+
+  // Map markder INIT 
+  var markers = {{ mks|safe }}  ;
+  var load_markers =function(markers){
+    get_dom('m_list').empty();
+    console.log('empty');
+    for (var i in markers) {
+      mk = markers[i] ;
+      var ht= make_htm(mk.m_id,mk.title,mk.m_date,mk.img);
+      var htm=ht.join(" ")
+      get_dom('m_list').append(htm);
+    }
+  };
+  load_markers(markers);
+
+</script>
+
+{% endblock %}
+

@@ -1,0 +1,24 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }} - 雪忆</title>
+    {% else %}
+    <title>雪忆</title>
+    {% endif %}
+</head>
+<body>
+<div id="wrapper">
+  <div id="info">
+    <div id="info-content">
+      <a href="/home">
+      <p>雪忆, 如雪般单纯, 冷静思考.</p>
+<form method='post'>
+{% csrf_token %}
+{{ form }}
+<input type="submit" value="提交">
+</form>
+    </div>
+  </div>
+</div><!-- #wrapper -->
+</body>
+</html>

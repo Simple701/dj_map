@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>MyMap</title>
+		<link href="{{ url_for('static', filename='login/css/login.css') }}?version=7" rel="stylesheet">
+        <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+		<script>
+		function do_login(){
+			var data={
+				u_name:$('#u_name').val(),
+				u_pass:$('#u_pass').val()
+			}
+			$.ajax({
+				type :"post",
+				url : "/login_hello",
+				dataType : "json",
+				data : data,
+				success:function(result){
+					$("#logo").html(result.st);
+					location.href = '/map'
+				}
+			});
+		}
+		</script>
+	</head>
+	<body>
+		<!--<div id="login_bj">-->
+		<div id="login">
+
+			<div class="login_box">
+				<p id="logo" class="logo" >MyMap </p>
+				<input id="u_name" class="admin" type="text" />
+				<input id="u_pass" class="passWord" type="password" />
+				<input class="submit" type="button" onclick="do_login()" />
+				
+				<div class="clear"></div>
+			</div>
+		</div>
+		<div id="copyright">~Build by Simple For the World~</div>
+		<!--</div>-->
+	</body>
+</html>
+
+watermark/1/image/aHR0cDovL29hcXB1M2twOS5ia3QuY2xvdWRkbi5jb20vc3Rfb3V0LnBuZw==/dissolve/100/gravity/Center/dx/10/dy/10/ws/0.5

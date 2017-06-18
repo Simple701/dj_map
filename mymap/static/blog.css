@@ -1,0 +1,39 @@
+@import url(http://fonts.lug.ustc.edu.cn/css?family=Open+Sans:400,800,700,600,300);
+
+body {
+  margin:0;
+  font-family: 'Open Sans', sans-serif;
+  background: #eee;
+}
+/*
+ * Masthead for nav
+ */
+
+.allmap {
+	height: 590px;
+	margin-top:56px;
+	margin-left: 0;
+	margin-right: 0;
+
+}
+
+.base_pg {
+	margin-top: 66px;
+	padding-left: 10%;
+	padding-right: 10%;
+
+}
+
+
+#timeline{width:1120px;height:400px;overflow:hidden;margin:10% auto 0 auto;position:relative;background:url('../static/image/licbg.png') left 340px repeat-x;}
+#dates{width:1120px;overflow:hidden;margin-top:20px;}
+#dates li{float:left;width:94px;height:90px;font-size:16px;text-align:center;}
+#dates a{color:#713611;width:94px;height:90px;line-height:130px;display:block;}
+#dates .selected{font-size:18px;font-weight:bold;background:url(../static/image/licbgt.png) no-repeat center top;}
+#issues{width:1120px;height:300px;overflow:hidden;}
+#issues li{width:1120px;height:300px;list-style:none;float:left;}
+#issues li img{text-align:center;display:block;margin:0 auto;}
+#next,#prev{position:absolute;font-size:100px;font-family:"宋体";top:90px;width:100px;height:100px;text-align:center;line-height:100px;overflow:hidden;color:#713611;}
+#next{right:50%;margin-right:-400px;}
+#prev{left:50%;margin-left:-400px;}
+#next.disabled,#prev.disabled{opacity:0.2;}

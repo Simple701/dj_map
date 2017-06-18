@@ -1,0 +1,59 @@
+{% load i18n %}<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.js"></script>    
+
+
+    <link rel="stylesheet" href='/static/login/css/login.css?version=5') }}">
+</head>
+<body>
+  <div class="container">
+  <nav >
+  <ul class="nav nav-pills">
+    <li role="presentation" class="active"><a href="#">Home</a></li>
+    <li role="presentation"><a href="#">Profile</a></li>
+    <li role="presentation"><a href="#">Messages</a></li>
+  </ul>
+  </nav>
+  </br>
+
+<div id="login" >
+    <div class="field-wrapper ">
+    <p class="logo" >MyMap </p>
+    </div>
+  
+	<form method="post" action=".">
+    <div class="field-wrapper ">
+		{% if form.errors %}
+			{% include "users/partials/errors.html" %}
+		{% endif %}
+		{% csrf_token %}
+		{% for field in form %}
+			{% include "users/partials/field.html" %}
+		{% endfor %}
+    </div>
+		<div class="field-wrapper ">
+			<input class="submit" type="submit" value="{% trans '' %}" />
+		</div>
+		<input type="hidden" name="next" value="{{ next }}" />
+		<p><a href="{% url 'users_password_reset' %}">{% trans "Forgot password" %}</a></p>
+		<p><a href="{% url 'users_register' %}">{% trans "Register" %}</a></p>
+	</form>
+	<div class="clear"></div>
+</div>
+
+  </div>
+</body>
+</html>
+

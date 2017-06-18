@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../static/1024.jpg">
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.js"></script>    
+    <link rel="stylesheet" href="../static/blog.css">
+
+  <title>{{ title }}</title>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">TestMap</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+            <input type="text" id="search-input" class="form-control" size="39%" placeholder="Search...">
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+        </div>
+        <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:130px;height:auto; display:none;"></div>
+      </div>
+    </nav>
+
+
+  <div class="container-fluid">
+  <div class="row">
+  
+<div id="timeline">
+  <ul id="issues">
+    <li id="1900">
+      <img src="../static/image/img4.jpg" width="436" height="300" />
+    </li>
+    <li id="1944">
+      <img src="../static/image/img4.jpg" width="436" height="300" />
+    </li>
+    <li id="1950">
+      <img src="../static/image/img4.jpg" width="436" height="300" />
+    </li>
+    <li id="1971">
+      <img src="../static/image/img4.jpg" width="436" height="300" />
+    </li>
+    <li id="1999">
+      <img src="../static/image/img4.jpg" width="436" height="300" />
+    </li>
+    <li id="2001">
+      <img src="../static/image/img4.jpg" width="436" height="300" />
+    </li>
+    <li id="2011">
+      <img src="../static/image/img4.jpg" width="436" height="300" />
+    </li>
+  </ul>
+  <ul id="dates">
+    <li><a href="#1900">1900</a></li>
+    <li><a href="#1944">1944</a></li>
+    <li><a href="#1950">1950</a></li>
+    <li><a href="#1971">1971</a></li>
+    <li><a href="#1999">1999</a></li>
+    <li><a href="#2001">2001</a></li>
+    <li><a href="#2011">2011</a></li>
+  </ul>
+  <a href="#" id="next">></a>
+  <a href="#" id="prev"><</a>
+</div>
+
+
+
+  </div>
+  </div><!-- end container -->
+
+
+</body>
+</html>
+<script type="text/javascript" src="../static/jquery.timelinr-0.9.4.js"></script>
+<script type="text/javascript"> 
+$(function(){
+  $("#timeline").timelinr()
+});
+</script>
+<script type="text/javascript">
+
+  // Map markder INIT 
+  var markers ={% autoescape false %}  {{ markers }} {% endautoescape %} ;
+  for (var i in markers) {
+    console.log(1) ;
+  }
+
+
+  //----end
+
+
+
+</script>
